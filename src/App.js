@@ -1,86 +1,45 @@
 import React, { Component } from 'react';
-import axios from "axios";
 import './App.css';
-
-const UserCard = props => {
-  
-    return (
-      <div>
-        <img className="user-card-img" 
-        src={props.avatar_url} 
-        alt={`Github image of ${props.name}`}/>
-        <p>{props.name}</p>
-      </div>
-    )
-  
-  }
-  
-const UserCardList = props => {
-
-  return (
-    <div>
-      {
-        props.userCards.map(userCard => 
-          <UserCard key={userCard.name} {...userCard} />
-        )
-      }
-    </div>
-  )
-
-}
-
-class Form extends Component {
-
-  state = {
-    userName: ''
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-
-    axios
-      .get(`https://api.github.com/users/${this.state.userName}`)
-      .then(response => {
-        this.props.onSubmit(response.data);
-        //clear username
-        this.setState({ userName: ''});
-      });
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" 
-        value={this.state.userName}
-        placeholder="Username"
-        onChange={event => this.setState({userName: event.target.value})}
-        />
-        <button type="submit">Search</button>
-      </form>
-    )
-  }
-}
+import axios from "axios";
+import SearchForm from './Components/SearchForm';
+import UserInfo from './Components/UserInfo';
 
 class App extends Component {
 
-  state = {
-    userCards: []
+  constructor() {
+    super();
+    this.state = {
+      user: '', 
+      repository: {} 
+    }
   }
 
-  addNewUserCard = userCardInfo => {
-    this.setState(prevState => ({
-      userCards: prevState.userCards.concat(userCardInfo)
-    }));
-  };
+  performSearch = (query) => {
+
+    Promise.all([
+      axios.get(`https://api.github.com/users/${query}`),
+      axios.get(`https://api.github.com/users/${query}/repos`)
+    ])
+    .then(([userResponse, reposResponse]) => {
+        this.setState({user : userResponse.data, repository : reposResponse.data});
+    })
+    .catch(error => {
+      console.log('Error fetching and parsing data', error);
+    });    
+  }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Github Search</h1>
-        </header>
-        <Form onSubmit={this.addNewUserCard}/>
-        <UserCardList userCards={this.state.userCards}/>
+      <div>
+        <div className="main-header">
+          <div className="inner">
+            <h1 className="main-title">Github Search</h1>
+            <SearchForm onSearch={this.performSearch} />      
+          </div>   
+        </div>  
+        <div className="main-content">
+          <UserInfo user={this.state.user} repos={this.state.repository}/>
+        </div>
       </div>
     );
   }

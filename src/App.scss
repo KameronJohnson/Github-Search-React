@@ -1,33 +1,69 @@
-.App {
-  text-align: center;
-}
+/* ================================= 
+  Layout Styles
+==================================== */
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-  & .pink {
-    color: pink;
+.main-content {
+  width: 90%;
+  max-width: 1025px;
+  margin: auto;
+  & .user-info {
+    display: flex;
+    justify-content: flex-start;
+    & .left-column {
+      & .user-name {
+        text-align: center;
+        font-size: 1.5em;
+      }
+    }
   }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.main-header {
+  width: 100%;
+  background: #fff;
+  min-height: 80px;
+  z-index: 1000;
+  & .inner {
+    width: 90%;
+    max-width: 1025px;
+    margin: auto;
+    & .main-title {
+      color: red;
+      text-align: center;
+    }
+    & .search-form {
+      width: 100%;
+      margin: 35px auto;
+      & .is-hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+      & input {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #343434;
+        background-color: honeydew;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      }
+    }
+  }
 }
 
+.main-content::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
 
