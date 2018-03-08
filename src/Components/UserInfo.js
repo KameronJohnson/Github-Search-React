@@ -1,17 +1,28 @@
 import React from 'react';
 
-const UserInfo = ({ user, repos }) => {
+const UserInfo = ({ user, repos, gists }) => {
     
     let repoResults = Object.values(repos).map(repo => 
-        <li key={repo.name}><a target="_blank" href={repo.html_url}>{repo.name}</a></li>
+        <li className="user-list-item" key={repo.name}>
+            <a target="_blank" href={repo.html_url}>{repo.name}</a>
+        </li>
+    )
+    
+    let gistResults = Object.values(gists).map(gist => 
+        <li className="user-list-item" key={gist.id}>
+            <a target="_blank" href={gist.html_url}>{Object.keys(gist.files)}</a>
+        </li>
     )
 
+    console.log("gists", gists);
+    console.log("repos", repos);
+    
     return (
         <div className="user-info">
             <div className="left-column">
                 {
                     user.type !== undefined && 
-                    <img className="user-card-img" 
+                    <img className="user-avatar" 
                     src={user.avatar_url} 
                     alt={`Github image of ${user.name}`}
                     />
@@ -21,13 +32,13 @@ const UserInfo = ({ user, repos }) => {
                 </p>
             </div>
             <div className="right-column">
-                <div className="user-repos">
-                    <p>{user.name}'s Repositories</p>
-                    <p>{repoResults}</p>
+                <div className="user-block">
+                    <p className="user-title">{user.name}'s Repositories</p>
+                    <ul className="user-list">{repoResults}</ul>
                 </div>
-                <div className="user-gists">
-                    <p></p>
-                    <p></p>
+                <div className="user-block">
+                    <p className="user-title">{user.name}'s Gists</p>
+                    <ul className="user-list">{gistResults}</ul>
                 </div>
             </div>
         

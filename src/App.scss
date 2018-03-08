@@ -10,10 +10,39 @@
     display: flex;
     justify-content: flex-start;
     & .left-column {
+      margin-right: 50px;
+      text-align: center;
+      & .user-avatar {
+        min-width: 100%;
+        max-width: 200px;
+      }
       & .user-name {
         text-align: center;
         font-size: 1.5em;
       }
+    }
+    & .right-column {
+      width: 100%;
+      & .user-block {
+        max-height: 250px;
+        overflow: scroll;
+        overflow-x: hidden;
+      }
+      & .user-title {
+        color: red;
+      }
+      & ul.user-list {
+        list-style: none;
+        padding: 0;
+        & li.user-list-item {
+          line-height: 1.5;
+          & a {
+            color: green;
+            text-decoration: none;
+          }
+        }
+      }
+      
     }
   }
 }

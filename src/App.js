@@ -10,7 +10,8 @@ class App extends Component {
     super();
     this.state = {
       user: '', 
-      repository: {} 
+      repos: {},
+      gists: {}
     }
   }
 
@@ -18,10 +19,14 @@ class App extends Component {
 
     Promise.all([
       axios.get(`https://api.github.com/users/${query}`),
-      axios.get(`https://api.github.com/users/${query}/repos`)
+      axios.get(`https://api.github.com/users/${query}/repos`),
+      axios.get(`https://api.github.com/users/${query}/gists`)
     ])
-    .then(([userResponse, reposResponse]) => {
-        this.setState({user : userResponse.data, repository : reposResponse.data});
+    .then(([userResponse, reposResponse, gistsResponse]) => {
+        this.setState({user: userResponse.data, 
+                      repos: reposResponse.data,
+                      gists: gistsResponse.data
+        });
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error);
@@ -38,7 +43,10 @@ class App extends Component {
           </div>   
         </div>  
         <div className="main-content">
-          <UserInfo user={this.state.user} repos={this.state.repository}/>
+          <UserInfo user={this.state.user} 
+                    repos={this.state.repos} 
+                    gists={this.state.gists}
+          />
         </div>
       </div>
     );
