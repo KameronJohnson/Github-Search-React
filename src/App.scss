@@ -24,17 +24,20 @@ $light-green: #7FFFD4;
   & .user-info {
     display: flex;
     justify-content: flex-start;
+    @media (max-width: 768px) {
+      display: block;
+    }
     & .left-column {
-      margin-right: 50px;
+      margin-right: 40px;
       text-align: center;
       & .user-avatar {
-        min-width: 100%;
+        width: 100%;
         max-width: 200px;
       }
       & .user-name {
         text-align: center;
         font-size: 1.2em;
-        margin-top: 0;
+        margin-top: 10px;
         font-weight: 300;
         & a {
           color: honeydew;
@@ -96,6 +99,9 @@ $light-green: #7FFFD4;
       font-weight: 200;
       text-shadow: 3px 1px 5px rgba(255,255,255,.3);
       font-size: 5em;
+      @media (max-width: 768px) {
+        font-size: 3em;
+      }
     }
     & .search-form {
       width: 100%;

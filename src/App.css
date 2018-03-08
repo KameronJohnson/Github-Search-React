@@ -17,16 +17,19 @@ html, body {
   .main-content .user-info {
     display: flex;
     justify-content: flex-start; }
+    @media (max-width: 768px) {
+      .main-content .user-info {
+        display: block; } }
     .main-content .user-info .left-column {
-      margin-right: 50px;
+      margin-right: 40px;
       text-align: center; }
       .main-content .user-info .left-column .user-avatar {
-        min-width: 100%;
+        width: 100%;
         max-width: 200px; }
       .main-content .user-info .left-column .user-name {
         text-align: center;
         font-size: 1.2em;
-        margin-top: 0;
+        margin-top: 10px;
         font-weight: 300; }
         .main-content .user-info .left-column .user-name a {
           color: honeydew;
@@ -73,6 +76,9 @@ html, body {
       font-weight: 200;
       text-shadow: 3px 1px 5px rgba(255, 255, 255, 0.3);
       font-size: 5em; }
+      @media (max-width: 768px) {
+        .main-header .inner .main-title {
+          font-size: 3em; } }
     .main-header .inner .search-form {
       width: 100%;
       margin: 35px auto; }
