@@ -18,7 +18,6 @@ class App extends Component {
   }
 
   performSearch = (query) => {
-
     Promise.all([
       axios.get(`https://api.github.com/users/${query}`),
       axios.get(`https://api.github.com/users/${query}/repos?per_page=100`),
