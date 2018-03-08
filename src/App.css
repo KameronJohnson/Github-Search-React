@@ -1,6 +1,15 @@
+html, body {
+  height: 100%; }
+
 /* ================================= 
   Layout Styles
 ==================================== */
+#root {
+  height: 100vh;
+  overflow: auto;
+  background-color: #111026;
+  font-family: 'Raleway', sans-serif; }
+
 .main-content {
   width: 90%;
   max-width: 1025px;
@@ -16,27 +25,42 @@
         max-width: 200px; }
       .main-content .user-info .left-column .user-name {
         text-align: center;
-        font-size: 1.5em; }
+        font-size: 1.2em;
+        margin-top: 0;
+        font-weight: 300; }
+        .main-content .user-info .left-column .user-name a {
+          color: honeydew;
+          text-decoration: none; }
+        .main-content .user-info .left-column .user-name a:hover {
+          color: #B299CC; }
     .main-content .user-info .right-column {
       width: 100%; }
       .main-content .user-info .right-column .user-block {
-        max-height: 250px;
-        overflow: scroll;
-        overflow-x: hidden; }
+        color: honeydew; }
       .main-content .user-info .right-column .user-title {
-        color: red; }
+        color: #7FFFD4;
+        font-size: 2em;
+        margin: 0;
+        font-weight: 200;
+        text-shadow: rgba(255, 255, 255, 0.3) 3px 1px 5px; }
       .main-content .user-info .right-column ul.user-list {
         list-style: none;
         padding: 0; }
         .main-content .user-info .right-column ul.user-list li.user-list-item {
           line-height: 1.5; }
           .main-content .user-info .right-column ul.user-list li.user-list-item a {
-            color: green;
+            color: honeydew;
+            font-weight: 300;
             text-decoration: none; }
+          .main-content .user-info .right-column ul.user-list li.user-list-item a:hover {
+            color: #B299CC; }
+  .main-content hr.line {
+    border-width: .5px;
+    border-top: .5px solid honeydew; }
 
 .main-header {
+  display: flex;
   width: 100%;
-  background: #fff;
   min-height: 80px;
   z-index: 1000; }
   .main-header .inner {
@@ -44,8 +68,11 @@
     max-width: 1025px;
     margin: auto; }
     .main-header .inner .main-title {
-      color: red;
-      text-align: center; }
+      color: #7FFFD4;
+      text-align: center;
+      font-weight: 200;
+      text-shadow: 3px 1px 5px rgba(255, 255, 255, 0.3);
+      font-size: 5em; }
     .main-header .inner .search-form {
       width: 100%;
       margin: 35px auto; }
@@ -64,14 +91,9 @@
         padding: .375rem .75rem;
         font-size: 1rem;
         line-height: 1.5;
-        color: #343434;
+        color: #111026;
         background-color: honeydew;
         background-clip: padding-box;
-        border: 1px solid #ced4da;
+        border: 1px solid powderblue;
         border-radius: .25rem;
         transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
-
-.main-content::after {
-  content: " ";
-  display: table;
-  clear: both; }

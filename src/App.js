@@ -4,6 +4,8 @@ import axios from "axios";
 import SearchForm from './Components/SearchForm';
 import UserInfo from './Components/UserInfo';
 
+require('typeface-raleway');
+
 class App extends Component {
 
   constructor() {
@@ -19,8 +21,8 @@ class App extends Component {
 
     Promise.all([
       axios.get(`https://api.github.com/users/${query}`),
-      axios.get(`https://api.github.com/users/${query}/repos`),
-      axios.get(`https://api.github.com/users/${query}/gists`)
+      axios.get(`https://api.github.com/users/${query}/repos?per_page=100`),
+      axios.get(`https://api.github.com/users/${query}/gists?per_page=100`)
     ])
     .then(([userResponse, reposResponse, gistsResponse]) => {
         this.setState({user: userResponse.data, 

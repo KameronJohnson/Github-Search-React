@@ -24,7 +24,7 @@ const UserInfo = ({ user, repos, gists }) => {
                     user.type !== undefined && 
                     <img className="user-avatar" 
                     src={user.avatar_url} 
-                    alt={`Github image of ${user.name}`}
+                    alt={`${user.name}'`}
                     />
                 }
                 <p className="user-name">
@@ -34,10 +34,12 @@ const UserInfo = ({ user, repos, gists }) => {
             <div className="right-column">
                 <div className="user-block">
                     <p className="user-title">{user.name}'s Repositories</p>
+                    <hr class="line" />
                     <ul className="user-list">{repoResults}</ul>
                 </div>
                 <div className="user-block">
                     <p className="user-title">{user.name}'s Gists</p>
+                    <hr class="line" />
                     <ul className="user-list">{gistResults}</ul>
                 </div>
             </div>

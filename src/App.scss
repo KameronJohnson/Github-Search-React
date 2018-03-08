@@ -1,6 +1,21 @@
+html,body {
+  height: 100%;
+}
+
+$dark-blue: #111026;
+$purple: #B299CC;
+$light-green: #7FFFD4;
+
 /* ================================= 
   Layout Styles
 ==================================== */
+
+#root {
+  height: 100vh;
+  overflow: auto;
+  background-color: $dark-blue;
+  font-family: 'Raleway', sans-serif;
+}
 
 .main-content {
   width: 90%;
@@ -18,18 +33,29 @@
       }
       & .user-name {
         text-align: center;
-        font-size: 1.5em;
+        font-size: 1.2em;
+        margin-top: 0;
+        font-weight: 300;
+        & a {
+          color: honeydew;
+          text-decoration: none;
+        }
+        & a:hover {
+          color: $purple;
+        }
       }
     }
     & .right-column {
       width: 100%;
       & .user-block {
-        max-height: 250px;
-        overflow: scroll;
-        overflow-x: hidden;
+        color: honeydew;
       }
       & .user-title {
-        color: red;
+        color: $light-green;
+        font-size: 2em;
+        margin: 0;
+        font-weight: 200;
+        text-shadow: rgba(255, 255, 255, 0.3) 3px 1px 5px;
       }
       & ul.user-list {
         list-style: none;
@@ -37,19 +63,27 @@
         & li.user-list-item {
           line-height: 1.5;
           & a {
-            color: green;
+            color: honeydew;
+            font-weight: 300;
             text-decoration: none;
+          }
+          & a:hover {
+            color: $purple;
           }
         }
       }
       
     }
   }
+  & hr.line {
+    border-width: .5px;
+    border-top: .5px solid honeydew;
+  }
 }
 
 .main-header {
+  display: flex;
   width: 100%;
-  background: #fff;
   min-height: 80px;
   z-index: 1000;
   & .inner {
@@ -57,8 +91,11 @@
     max-width: 1025px;
     margin: auto;
     & .main-title {
-      color: red;
+      color: $light-green;
       text-align: center;
+      font-weight: 200;
+      text-shadow: 3px 1px 5px rgba(255,255,255,.3);
+      font-size: 5em;
     }
     & .search-form {
       width: 100%;
@@ -79,10 +116,10 @@
         padding: .375rem .75rem;
         font-size: 1rem;
         line-height: 1.5;
-        color: #343434;
+        color: $dark-blue;
         background-color: honeydew;
         background-clip: padding-box;
-        border: 1px solid #ced4da;
+        border: 1px solid powderblue;
         border-radius: .25rem;
         transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
       }
@@ -90,9 +127,9 @@
   }
 }
 
-.main-content::after {
-  content: " ";
-  display: table;
-  clear: both;
-}
+// .main-content::after {
+//   content: " ";
+//   display: table;
+//   clear: both;
+// }
 
