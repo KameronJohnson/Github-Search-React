@@ -24,10 +24,12 @@ const UserInfo = ({ user, repos, gists }) => {
             { user.type !== undefined &&
                 <div className="user-info">
                     <div className="left-column">
+                        <a href={user.html_url} target="_blank">
                             <img className="user-avatar" 
-                            src={user.avatar_url} 
-                            alt={`${user.name}'`}
+                                src={user.avatar_url} 
+                                alt={`${user.name}'`}
                             />
+                        </a>
                         <p className="user-name">
                             <a href={user.html_url} target="_blank">{user.name}</a>
                         </p>
