@@ -1,13 +1,19 @@
 html,body {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+/* ================================= 
+  Colors
+==================================== */
 
 $dark-blue: #111026;
 $purple: #B299CC;
 $light-green: #7FFFD4;
 
 /* ================================= 
-  Layout Styles
+  Styles
 ==================================== */
 
 #root {
@@ -132,10 +138,3 @@ $light-green: #7FFFD4;
     }
   }
 }
-
-// .main-content::after {
-//   content: " ";
-//   display: table;
-//   clear: both;
-// }
-

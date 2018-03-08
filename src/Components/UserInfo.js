@@ -16,9 +16,6 @@ const UserInfo = ({ user, repos, gists }) => {
         </li>
     )
     
-    console.log(gistResults);
-    console.log(repoResults);
-
     return (
         <div>
             { user.type !== undefined &&
